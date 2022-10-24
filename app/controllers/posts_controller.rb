@@ -11,19 +11,24 @@ class PostsController < ApplicationController
     @user = @post.user_id
   end
   def new
+    @user = User.find(params[:user_id])
     @post = Post.new(params[:id])
   end
 
   def create
-    # binding.pry
-    # @user = User.find(params[:user_id])
-    # @post = @user.posts.new(post_params)
+    #  binding.pry
+    @user = User.find(params[:user_id])
+    @post = @user.posts.new(post_params)
    
     # @user = User.find(params['user_id'])
-    # # @post = @user.posts.new(post_params)
-    @post = Post.new(post_params)
+
+    #@post = user.posts.create!(posts_params)
+
+    # @post = Post.new(post_params)
+    # @user = @post.user_id
     if @post.save
-      redirect_to @post
+      # redirect_to @post
+      redirect_to user_posts_path(@user)
     else
       render :new, status: :unprocessable_entity
     end
@@ -44,8 +49,8 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-
-    redirect_to user_posts_path, status: :see_other
+    @user = @post.user_id
+    redirect_to user_posts_path(@user), status: :see_other
   end
   private
   def post_params
