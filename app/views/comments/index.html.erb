@@ -1,1 +1,8 @@
-helo
+
+<% if @comments != nil %>
+    <% @comments.each do|comment|  %>
+    <%= comment.commenter %>
+        <%end%>
+<% else %>
+<p>No comment found<p>
+<%end%>

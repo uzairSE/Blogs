@@ -8,6 +8,9 @@ Rails.application.routes.draw do
       resources :comments
       end
     end
+
+    get '/add_friends', to: 'users#add_friends'
+
   # namespace :admin do
   #   resources :posts, :comments
   # end

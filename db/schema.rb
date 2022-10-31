@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_19_080928) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_25_095439) do
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -66,8 +66,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_19_080928) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_users_on_user_id"
   end
 
   add_foreign_key "comments", "posts"
   add_foreign_key "posts", "users"
+  add_foreign_key "users", "users"
 end

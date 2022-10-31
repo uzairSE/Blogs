@@ -1,6 +1,12 @@
 
-
+<br/>
 <%="User Name: "+ @user.name%>
 <br/>
-<%# <%= link_to "Posts",  user_posts_path %>  
+<p>All friends:</p>
+<br/>
+
+<br/><br/>
+<%= link_to "Add Friend", add_friends_path%>
+<br/><br/>
 <%= link_to "User's Posts", user_posts_path(@user) %> 
+<%= link_to "Back to users", users_path %>
